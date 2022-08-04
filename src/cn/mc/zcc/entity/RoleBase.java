@@ -1,6 +1,6 @@
 package cn.mc.zcc.entity;
 
-import cn.mc.zcc.ElementM;
+
 import cn.mc.zcc.info.Element;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -19,6 +19,8 @@ public abstract class RoleBase implements Serializable {
     private Element element;
     //角色经验
     private int exp;
+    //角色最大加经验值
+    private int maxExp;
     //角色基本伤害
     private int damage;
     //暴击伤害加成
@@ -52,16 +54,25 @@ public abstract class RoleBase implements Serializable {
     abstract public void attackEvent(Player player);
 
     //使用角色攻击到实体时触发，触发的事件
-    abstract void attackEntityEvent(Player player, Entity entity);
+    abstract public void attackEntityEvent(Player player, Entity entity);
 
     //跳跃事件
-    abstract void JumpEvent(Player player);
+    abstract public void jumpEvent(Player player);
 
     //蹲下事件
-    abstract void ShiftEvent(Player player);
+    abstract public void shiftEvent(Player player);
 
     //切换当前角色出场时触发
-    abstract void SpawnEvent(Player player);
+    abstract public void spawnEvent(Player player);
+
+    //当角色被一个元素附着事触发
+    abstract public void elementUpEvent(Player player, Element element, EntityElement entityElement);
+
+    //当前角色一个元素附着消失触发
+    abstract public void elementDownEvent(Player player, Element element, EntityElement entityElement);
+
+    //元素反应 参 为 玩家、新附着的元素、附着新元素之前已附着的元素
+    abstract public void elementNewUpEvent(Player player, Element newElement, Element... oldElement);
 
     public String getName() {
         return name;
@@ -121,5 +132,14 @@ public abstract class RoleBase implements Serializable {
 
     public void setLuck_crit(float luck_crit) {
         this.luck_crit = luck_crit;
+    }
+
+
+    public int getMaxExp() {
+        return maxExp;
+    }
+
+    public void setMaxExp(int maxExp) {
+        this.maxExp = maxExp;
     }
 }

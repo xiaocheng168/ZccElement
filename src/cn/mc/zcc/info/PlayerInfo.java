@@ -1,7 +1,7 @@
 package cn.mc.zcc.info;
 
+import cn.mc.zcc.entity.Role;
 import cn.mc.zcc.entity.RoleBase;
-import org.bukkit.entity.Player;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -11,15 +11,15 @@ import java.util.LinkedHashMap;
 public class PlayerInfo implements Serializable {
     private String player;
     //玩家所有角色卡
-    private final HashMap<Integer, RoleBase> roles = new LinkedHashMap<>();
+    private final HashMap<Integer, Role> roles = new LinkedHashMap<>();
     //当前正在使用角色
-    private RoleBase usedRole;
+    private Role usedRole;
 
     public PlayerInfo() {
     }
 
     //Fun
-    public void addRole(RoleBase roleBase) {
+    public void addRole(Role roleBase) {
         this.roles.put(roleBase.getId(), roleBase);
     }
 
@@ -35,18 +35,18 @@ public class PlayerInfo implements Serializable {
         this.player = player;
     }
 
-    public HashMap<Integer, RoleBase> getRoles() {
+    public HashMap<Integer, Role> getRoles() {
         return roles;
     }
 
-    public RoleBase getUsedRole() {
+    public Role getUsedRole() {
         if (usedRole == null) {
             this.setUsedRole(this.roles.get(1));
         }
         return usedRole;
     }
 
-    public void setUsedRole(RoleBase usedRole) {
+    public void setUsedRole(Role usedRole) {
         this.usedRole = usedRole;
     }
 }

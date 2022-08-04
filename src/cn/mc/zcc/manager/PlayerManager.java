@@ -1,11 +1,11 @@
 package cn.mc.zcc.manager;
 
 import cn.mc.zcc.config.PlayerConfig;
+import cn.mc.zcc.entity.EntityElement;
+import cn.mc.zcc.info.Element;
 import cn.mc.zcc.info.PlayerInfo;
-import org.bukkit.Material;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BookMeta;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -35,4 +35,25 @@ public abstract class PlayerManager {
         PLAYER_PLAYER_INFO_HASH_MAP.put(player.getName(), playerInfo);
     }
 
+    public static PlayerInfo getPlayerInfo(Player player) {
+        return PLAYER_PLAYER_INFO_HASH_MAP.get(player.getName());
+    }
+
+    //元素附着触发器
+    public static void elementUp(Player player, Element element, EntityElement entityElement) {
+        PlayerInfo playerInfo = PLAYER_PLAYER_INFO_HASH_MAP.get(player.getName());
+        playerInfo.getUsedRole().elementUpEvent(player, element, entityElement);
+    }
+
+    //元素附着触发器
+    public static void elementDown(Player player, Element element, EntityElement entityElement) {
+        PlayerInfo playerInfo = PLAYER_PLAYER_INFO_HASH_MAP.get(player.getName());
+        playerInfo.getUsedRole().elementDownEvent(player, element, entityElement);
+    }
+
+    //玩家攻击一个实体事件
+    public static void attackEntity(Player player, Entity entity) {
+        PlayerInfo playerInfo = PLAYER_PLAYER_INFO_HASH_MAP.get(player.getName());
+        playerInfo.getUsedRole().attackEntityEvent(player, entity);
+    }
 }

@@ -1,7 +1,7 @@
 package cn.mc.zcc.manager;
 
 import cn.mc.zcc.entity.Role;
-import cn.mc.zcc.entity.RoleBase;
+import cn.mc.zcc.entity.roles.Paimo;
 import cn.mc.zcc.info.Element;
 
 import java.util.HashMap;
@@ -11,7 +11,7 @@ public class RoleManager {
     public static HashMap<Integer, Role> defaultRole = new LinkedHashMap<>();
 
     static {
-        add(new Role("派蒙", 1, Element.FIRE, 1, 100));
+        add(new Paimo("派蒙", 1, Element.FIRE, 1, 100));
     }
 
     public static void add(Role role) {

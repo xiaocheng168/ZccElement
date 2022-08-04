@@ -17,22 +17,39 @@ public class Role extends RoleBase {
     }
 
     @Override
-    void attackEntityEvent(Player player, Entity entity) {
+    public void attackEntityEvent(Player player, Entity entity) {
 
     }
 
     @Override
-    void JumpEvent(Player player) {
+    public void jumpEvent(Player player) {
 
     }
 
     @Override
-    void ShiftEvent(Player player) {
+    public void shiftEvent(Player player) {
 
     }
 
     @Override
-    void SpawnEvent(Player player) {
+    public void spawnEvent(Player player) {
 
     }
+
+    @Override
+    public void elementUpEvent(Player player, Element element, EntityElement entityElement) {
+
+    }
+
+    @Override
+    public void elementDownEvent(Player player, Element element, EntityElement entityElement) {
+
+    }
+
+    @Override
+    public void elementNewUpEvent(Player player, Element newElement, Element... oldElement) {
+
+    }
+
+
 }
