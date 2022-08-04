@@ -1,0 +1,5 @@
+name: ZccElement
+main: cn.mc.zcc.ElementM
+version: 1.0.0
+api-version: 1.13
+description: "月夕世界 元素反应插件"
