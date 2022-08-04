@@ -1,37 +1,52 @@
 package cn.mc.zcc.info;
 
+import cn.mc.zcc.entity.RoleBase;
 import org.bukkit.entity.Player;
 
-import javax.management.relation.Role;
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 //玩家信息类
-public class PlayerInfo {
-    private final Player player;
-    //角色卡
-    private final Set<Role> roles = new HashSet<>();
+public class PlayerInfo implements Serializable {
+    private String player;
+    //玩家所有角色卡
+    private final HashMap<Integer, RoleBase> roles = new LinkedHashMap<>();
     //当前正在使用角色
-    private Role role;
+    private RoleBase usedRole;
 
-    public PlayerInfo(Player player) {
-        this.player = player;
+    public PlayerInfo() {
+    }
+
+    //Fun
+    public void addRole(RoleBase roleBase) {
+        this.roles.put(roleBase.getId(), roleBase);
     }
 
 
-    public Player getPlayer() {
+    //GET SET
+
+
+    public String getPlayer() {
         return player;
     }
 
-    public Set<Role> getRoles() {
+    public void setPlayer(String player) {
+        this.player = player;
+    }
+
+    public HashMap<Integer, RoleBase> getRoles() {
         return roles;
     }
 
-    public Role getRole() {
-        return role;
+    public RoleBase getUsedRole() {
+        if (usedRole == null) {
+            this.setUsedRole(this.roles.get(1));
+        }
+        return usedRole;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setUsedRole(RoleBase usedRole) {
+        this.usedRole = usedRole;
     }
 }

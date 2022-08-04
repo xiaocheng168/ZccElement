@@ -5,6 +5,7 @@
       <element id="module-output" name="ZccElement" />
       <element id="file-copy" path="$PROJECT_DIR$/config.yml" />
       <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+      <element id="extracted-dir" path="E:/Java/Java/Minecraft/API/BookApi/BookApi.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
